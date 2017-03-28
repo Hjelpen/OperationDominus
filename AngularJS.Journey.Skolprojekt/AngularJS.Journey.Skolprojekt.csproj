@@ -207,6 +207,8 @@
     <Content Include="App\appRouting.js" />
     <Content Include="App\Controllers\homeController.js" />
     <Content Include="App\Views\home.html" />
+    <Content Include="Content\bootstrap.cerulean.css" />
+    <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
