@@ -1,23 +1,26 @@
 ﻿<!DOCTYPE html>
-<html data-ng-app="AngularJourneyApp">
+<html>
 <head>
     <title>Journey</title>
 	<meta charset="utf-8" />
-    <!-- angular library -->
+    <!-- angular library och annat -->
     <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.js"></script>
     <script src="Scripts/angular-route.min.js"></script>
+    <link href="Content/bootstrap.cerulean.min.css" rel="stylesheet" />  
+    <link href="Content/bootstrap.cerulean.css" rel="stylesheet" />
     <!-- controllers -->
     <script src="App/app.module.js"></script>
     <script src="App/appRouting.js"></script>
+    <script src="/App/Controllers/homeController.js"></script>
+    <script src="/App/Controllers/indexController.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
-<body>
+<body ng-app="AngularJourneyApp">
 
     <h1> Journey</h1>   
 
-    <div class="container">
-        <div data-ng-view="">
-        </div>
-    </div>
+    <div ng-view></div>
 
 </body>
 </html>
