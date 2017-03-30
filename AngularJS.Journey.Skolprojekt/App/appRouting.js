@@ -1,6 +1,8 @@
-﻿(function(){
+﻿(function () {
+
 angular.module('AngularJourneyApp').
-    config(function ($routeProvider) {
+    config(function ($routeProvider, $locationProvider) {
+        $locationProvider.hashPrefix('');
 
     $routeProvider.when("/login", {
         controller: "loginController",
@@ -11,7 +13,13 @@ angular.module('AngularJourneyApp').
         controller: "homeController",
         templateUrl: "/App/Views/home.html"
     });
- 
+
+    $routeProvider.when("/register", {
+        controller: "registerController",
+        templateUrl: "/App/Views/register.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
     });
+
 })();
