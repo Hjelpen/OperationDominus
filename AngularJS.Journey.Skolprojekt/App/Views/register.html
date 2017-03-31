@@ -11,6 +11,9 @@
         <input type="password" class="form-control" placeholder="Lösenord" data-ng-model="registration.password" required>
         <input type="password" class="form-control" placeholder="Bekräfta lösenord" data-ng-model="registration.confirmPassword" required>
         <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="register()">Submit</button>
-    </form>
+        <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+            {{message}}
+        </div>
+</form>
 </body>
 </html>

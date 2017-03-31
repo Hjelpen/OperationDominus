@@ -208,6 +208,7 @@
     <Content Include="App\Controllers\homeController.js" />
     <Content Include="App\Controllers\indexController.js" />
     <Content Include="App\Controllers\registerController.js" />
+    <Content Include="App\Services\registerService.js" />
     <Content Include="App\Views\home.html" />
     <Content Include="App\Views\register.html" />
     <Content Include="Content\bootstrap.cerulean.css" />
