@@ -1,3 +1,3 @@
 ﻿(function(){
-    angular.module('AngularJourneyApp', ['ngRoute']);
+    angular.module('AngularJourneyApp', ['ngRoute', 'LocalStorageModule']);
 })();

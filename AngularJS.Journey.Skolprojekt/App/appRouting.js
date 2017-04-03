@@ -19,6 +19,11 @@ angular.module('AngularJourneyApp').
         templateUrl: "/App/Views/register.html"
     });
 
+    $routeProvider.when("/mainpage", {
+        controller: "mainpageController",
+        templateUrl: "/App/Views/mainpage.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
     });
 
