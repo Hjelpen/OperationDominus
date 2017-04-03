@@ -1,13 +1,13 @@
 ﻿(function(){
     angular.module('AngularJourneyApp')
-        .controller('indexController', ['$scope', function ($scope) {
+        .controller('indexController', ['$scope', '$location', 'loginService', function ($scope, $location, loginService) {
 
     $scope.logOut = function () {
-        authService.logOut();
+        loginService.logOut();
         $location.path('/home');
     }
 
-    $scope.authentication = authService.authentication;
+    $scope.authentication = loginService.authentication;
 
 }]);
 })();
