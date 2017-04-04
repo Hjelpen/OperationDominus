@@ -9,6 +9,7 @@ namespace AngularJS.Journey.Skolprojekt.Models
     public class User
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Användarnamn")]
 
         public string UserName { get; set; }
