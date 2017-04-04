@@ -10,11 +10,17 @@
         <input type="text" class="form-control" placeholder="Email" data-ng-model="loginData.userName" required autofocus>
         <input type="password" class="form-control" placeholder="Lösenord" data-ng-model="loginData.password" required>
         <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="login()">Logga in!</button>
-    </form>
-        <div class=".col-xs-6">
-            <a class="btn btn-info" href="/#/register" role="button">Skapa konto!</a>
+        <div data-ng-hide="message == ''" class="alert alert-danger">
+            {{message}}
         </div>
-
+        </form>
+    <hr />
+     <p> 
+         <div class=".col-xs-6">
+             <a class="btn btn-info" href="/#/register" role="button">Skapa konto!</a>
+         </div>
+    </p>      
     <a href="#/passwordRestore">Glömt lösenord!</a>
+
 </body>
 </html>

@@ -16,11 +16,10 @@
 
                     $location.path('/mainpage');
 
-                },
-                 function (err) {
-                     $scope.message = err.error_description;
-                 });
-            };
-
+            },
+               function (err) {
+                   $scope.message = err.error_description;
+                });
+          };
     }]);
 })();
