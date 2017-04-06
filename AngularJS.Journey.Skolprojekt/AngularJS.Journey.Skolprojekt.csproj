@@ -209,11 +209,14 @@
     <Content Include="App\Controllers\indexController.js" />
     <Content Include="App\Controllers\mainpageController.js" />
     <Content Include="App\Controllers\registerController.js" />
+    <Content Include="App\Controllers\vehicleController.js" />
+    <Content Include="App\Services\authInterceptorService.js" />
     <Content Include="App\Services\loginService.js" />
     <Content Include="App\Services\registerService.js" />
     <Content Include="App\Views\home.html" />
     <Content Include="App\Views\mainpage.html" />
     <Content Include="App\Views\register.html" />
+    <Content Include="App\Views\vehicle.html" />
     <Content Include="Content\bootstrap.cerulean.css" />
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="index.html" />

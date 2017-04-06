@@ -33,4 +33,8 @@ angular.module('AngularJourneyApp').
     $routeProvider.otherwise({ redirectTo: "/home" });
     });
 
+angular.module('AngularJourneyApp').config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+});
+
 })();
