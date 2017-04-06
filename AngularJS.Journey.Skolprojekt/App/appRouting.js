@@ -24,6 +24,12 @@ angular.module('AngularJourneyApp').
         templateUrl: "/App/Views/mainpage.html"
     });
 
+    $routeProvider.when("/vehicle", {
+        controller: "vehicleController",
+        templateUrl: "/App/Views/vehicle.html"
+    });
+
+
     $routeProvider.otherwise({ redirectTo: "/home" });
     });
 
