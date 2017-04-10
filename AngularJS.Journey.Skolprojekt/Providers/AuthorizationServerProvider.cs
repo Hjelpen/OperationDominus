@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.Owin.Security.OAuth;
-using Owin;
+﻿using Microsoft.Owin.Security.OAuth;
 using System.Threading.Tasks;
 using AngularJS.Journey.Skolprojekt.Repositories;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
+using Microsoft.AspNet.Identity.Owin;
+using AngularJS.Journey.Skolprojekt.Models;
 
 namespace AngularJS.Journey.Skolprojekt.Providers
 {
@@ -38,7 +35,8 @@ namespace AngularJS.Journey.Skolprojekt.Providers
             identity.AddClaim(new Claim("user_name", contex.UserName));
             identity.AddClaim(new Claim("role", "user"));
             contex.Validated(identity);
-        }
 
+            var userid = contex.UserName;
+        }
     }
 }

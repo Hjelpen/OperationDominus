@@ -11,7 +11,6 @@ namespace AngularJS.Journey.Skolprojekt.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Användarnamn")]
-
         public string UserName { get; set; }
 
         [Required]

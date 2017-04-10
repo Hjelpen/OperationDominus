@@ -213,6 +213,7 @@
     <Content Include="App\Services\authInterceptorService.js" />
     <Content Include="App\Services\loginService.js" />
     <Content Include="App\Services\registerService.js" />
+    <Content Include="App\Services\vehicleService.js" />
     <Content Include="App\Views\home.html" />
     <Content Include="App\Views\mainpage.html" />
     <Content Include="App\Views\register.html" />
@@ -986,11 +987,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\AccountController.cs" />
+    <Compile Include="API\VehicleController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="DataAcess\DbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Trip.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthorizationServerProvider.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -1022,10 +1027,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

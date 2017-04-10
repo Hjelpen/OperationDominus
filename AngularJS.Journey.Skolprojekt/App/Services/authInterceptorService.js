@@ -13,7 +13,7 @@ angular.module('AngularJourneyApp').factory('authInterceptorService', ['$q', '$l
         }
 
         return config;
-    }
+    };
 
     var _responseError = function (rejection) {
         if (rejection.status === 401) {

@@ -4,6 +4,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Threading.Tasks;
 using AngularJS.Journey.Skolprojekt.Models;
 using AngularJS.Journey.Skolprojekt.DataAcess;
+using System.Security.Claims;
+using System.Security.Principal;
 
 namespace AngularJS.Journey.Skolprojekt.Repositories
 {
@@ -37,6 +39,14 @@ namespace AngularJS.Journey.Skolprojekt.Repositories
 
             return user;
         }
+
+        public IdentityUser GetUserById(string userId)
+        {
+            IdentityUser user = _userManager.FindById(userId);
+
+            return user;
+        }
+           
 
         public void Dispose()
         {
