@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace AngularJS.Journey.Skolprojekt.Models
 {
     public class User
     {
+
         [Required]
         [EmailAddress]
         [Display(Name = "Användarnamn")]
@@ -17,7 +15,6 @@ namespace AngularJS.Journey.Skolprojekt.Models
         [StringLength(100, ErrorMessage = "Lösenordet {0} måste bestå av minst {2} tecken.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Lösenord")]
-
         public string Password { get; set; }
 
         [DataType(DataType.Password)]

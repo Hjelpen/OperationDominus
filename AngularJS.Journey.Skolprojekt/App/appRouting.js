@@ -29,12 +29,12 @@ angular.module('AngularJourneyApp').
         templateUrl: "/App/Views/vehicle.html"
     });
 
-
-    $routeProvider.otherwise({ redirectTo: "/home" });
+    $routeProvider.when("/trip", {
+        controller: "tripController",
+        templateUrl: "/App/Views/trip.html"
     });
 
-angular.module('AngularJourneyApp').config(function ($httpProvider) {
-    $httpProvider.interceptors.push('authInterceptorService');
-});
+    $routeProvider.otherwise({ redirectTo: "/home" });
 
+    });
 })();

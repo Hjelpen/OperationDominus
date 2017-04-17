@@ -1,9 +1,12 @@
-﻿(function () {
+﻿https://localhost:44341/
+
+(function () {
     "use strict";
     angular.module('AngularJourneyApp')
       .factory('loginService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
 
           var loginServiceFactory = {};
+          var token = "";
 
           var _authentication = {
               isAuth: false,
@@ -18,7 +21,7 @@
 
               $http.post('https://localhost:44341/' + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
 
-                  localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
+                  localStorageService.set('authorizationData', { token: response.data.access_token });
 
                   _authentication.isAuth = true;
                   _authentication.userName = loginData.userName;

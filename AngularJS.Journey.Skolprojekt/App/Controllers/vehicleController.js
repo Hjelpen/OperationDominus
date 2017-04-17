@@ -2,22 +2,33 @@
     angular.module('AngularJourneyApp')
         .controller('vehicleController', ['$scope', 'vehicleService', function ($scope, vehicleService) {
 
-            $scope.message = "";
+            $scope.vehicles = [];
 
             $scope.newVehicle = {
                 LicensNumber: "",
-                Status: true           
+                Status: true
             };
+
+            $scope.getAllVehicles = function () {
+                vehicleService.getSavedVehicles().then(function (response) {
+                    $scope.vehicles = response.data;
+                },
+                 function (response) {
+                     (response)
+                 });
+            }
 
             $scope.registerVehicle = function () {
 
                 vehicleService.saveVehicle($scope.newVehicle).then(function (response) {
 
-                    $scope.message = "Bil " + $scope.LicensNumber + "tillagd."
+                    $scope.newVehicle.LicensNumber = null;
+                    $scope.getAllVehicles();
                 },
                  function (response) {
-                     $scope.message = "Misslyckades att spara bil";
+                     (response)
                  });
             };
+
         }]);
 })();

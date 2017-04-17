@@ -5,8 +5,23 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-
-    <input type="text" class="form-control" placeholder="Registreringsnummer" data-ng-model="newVehicle.LicensNumber" required>
-    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="registerVehicle()">Spara fordon</button>
+    <div id="controllerDiv" ng-controller="vehicleController" ng-init="getAllVehicles()">
+        <h3>Alla fordon</h3>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Registreringsnummer</th>
+                <th>Status</th>
+            </tr>
+            <tr ng-repeat="vehicle in vehicles">
+                <td>{{vehicle.carId}}</td>
+                <td>{{vehicle.licensNumber}}</td>
+                <td>{{vehicle.status}}</td>
+            </tr>
+        </table>
+        <br />
+        <input type="text" class="form-control" placeholder="Registreringsnummer" data-ng-model="newVehicle.LicensNumber" required>
+        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="registerVehicle()">Spara fordon</button>
+    </div>
 </body>
 </html>

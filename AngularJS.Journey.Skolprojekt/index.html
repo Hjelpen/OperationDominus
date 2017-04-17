@@ -10,8 +10,10 @@
     <script src=Scripts/angular.min.js></script>
     <link href="Content/bootstrap.cerulean.min.css" rel="stylesheet" />  
     <link href="Content/bootstrap.cerulean.css" rel="stylesheet" />
+    <link href="Content/css.css" rel="stylesheet"/>
     <script src="Scripts/angular-route.min.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6xVHDMnjF_T9Xan-qUg5YCdj-xzI7sKA"></script>
 
     <!-- controllers, services -->
     <script src="App/app.module.js"></script>
@@ -22,10 +24,13 @@
     <script src="/App/Controllers/registerController.js"></script>
     <script src="App/Controllers/mainpageController.js"></script>
     <script src="App/Controllers/vehicleController.js"></script>
+    <script src="App/Controllers/tripController.js"></script>
     <script src="App/Services/authInterceptorService.js"></script>
     <script src="App/Services/registerService.js"></script>
     <script src="App/Services/loginService.js"></script>
     <script src="App/Services/vehicleService.js"></script>
+    <script src="App/Services/tripService.js"></script>
+    <script src="App/Services/geoLocationService.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
@@ -47,14 +52,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li data-ng-hide="!authentication.isAuth"><a href="#/mainpage">Hem</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="#/vehicle">Hantera fordon</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a href="#/newtrip">Ny resa</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/trip">Ny resa</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logga ut</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
-        <h1> Journey</h1>
     <div class="container">
         <div data-ng-view="">
         </div>

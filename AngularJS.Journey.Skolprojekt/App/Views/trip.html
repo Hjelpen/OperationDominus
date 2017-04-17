@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h2>Registrera ny resa</h2>
+    <form class="form-horizontal">
+        <div class=".col-xs-6 .col-md-4">
+            <div id="controllerDiv" ng-controller="tripController" ng-init="getAllVehicles()">
+                <select name="vehicle" ng-model="trip.Vehicle"
+                        ng-options="v.carId as v.licensNumber for v in vehicles">
+                    <option value="">Välj fordon</option>
+                </select><br />
+                Datum:  <input type="date" name="currentdate" data-ng-model="trip.Date" required />
+                <input type="text" class="form-control" placeholder="Mätarställning, start" data-ng-model="trip.MileageStart" required />
+                <input type="text" class="form-control" placeholder="Mätarställning, ankomst" data-ng-model="trip.MileageStop" required />
+                <input type="text" class="form-control" placeholder="Reslängd, km" data-ng-model="trip.DistanceTraveled" />
+                <input type="text" class="form-control" placeholder="Startadress" data-ng-model="trip.AdressStart" required /> <button type="button" data-ng-click="getStartLocation()">Placeholder</button>
+                <input type="text" class="form-control" placeholder="Destinationsadress" data-ng-model="trip.AdressStop" required /> <button type="button" data-ng-click="getStopLocation()">Placeholder</button>
+                <div class="col-lg-10">
+                    <textarea class="form-control" placeholder="Ärende" id="textAreaErrand" data-ng-model="trip.Erand" required></textarea>
+                    <br />
+                    <textarea class="form-control" placeholder="Anteckningar" rows="3" id="textArea" data-ng-model="trip.Notes"></textarea>
+                </div>
+                <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveTrip()">Spara</button>
+                <p ng-model="message"></p>
+
+            </div>
+        </div>
+    </form> 
+</body>
+</html>

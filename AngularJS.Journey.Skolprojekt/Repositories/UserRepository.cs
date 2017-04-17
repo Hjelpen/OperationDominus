@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AngularJS.Journey.Skolprojekt.Models;
 using AngularJS.Journey.Skolprojekt.DataAcess;
 using System.Security.Claims;
+using System.Linq;
 using System.Security.Principal;
+using AngularJS.Journey.Skolprojekt.Providers;
 
 namespace AngularJS.Journey.Skolprojekt.Repositories
 {
@@ -13,17 +15,17 @@ namespace AngularJS.Journey.Skolprojekt.Repositories
     {
        private DbContext _ctx;
 
-       private UserManager<IdentityUser> _userManager;
+       private UserManager<ApplicationUser> _userManager;
 
         public UserRepository()
         {
-            _ctx = new DbContext();
-            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
+            _ctx = DbContextProvider.Instance.DbContext;
+            _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_ctx));
         }
 
         public async Task<IdentityResult> RegisterUser (User userModel)
         {
-            IdentityUser user = new IdentityUser
+            ApplicationUser user = new ApplicationUser
             {
                 UserName = userModel.UserName
             };
@@ -33,24 +35,24 @@ namespace AngularJS.Journey.Skolprojekt.Repositories
             return result;
         }
 
-        public async Task<IdentityUser> FindUser(string userName, string password)
+        public async Task<ApplicationUser> FindUser(string userName, string password)
         {
-            IdentityUser user = await _userManager.FindAsync(userName, password);
+            ApplicationUser user = await _userManager.FindAsync(userName, password);
 
             return user;
         }
 
-        public IdentityUser GetUserById(string userId)
+        public ApplicationUser GetUserByUserName(string userName)
         {
-            IdentityUser user = _userManager.FindById(userId);
+            ApplicationUser user = _userManager.FindByName(userName);
 
             return user;
         }
-           
 
         public void Dispose()
         {
-            _ctx.Dispose();
+            DbContextProvider.Instance.DisposeContext();
+            _ctx = null;
             _userManager.Dispose();
         }
     }

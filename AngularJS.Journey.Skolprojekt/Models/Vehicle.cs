@@ -10,7 +10,6 @@ namespace AngularJS.Journey.Skolprojekt.Models
         public string LicensNumber { get; set;}
 
         public bool Status { get; set; }
-
         public virtual ApplicationUser User { get; set; }
 
     }
