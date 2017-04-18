@@ -16,9 +16,9 @@
                 Datum:  <input type="date" name="currentdate" data-ng-model="trip.Date" required />
                 <input type="text" class="form-control" placeholder="Mätarställning, start" data-ng-model="trip.MileageStart" required />
                 <input type="text" class="form-control" placeholder="Mätarställning, ankomst" data-ng-model="trip.MileageStop" required />
-                <input type="text" class="form-control" placeholder="Reslängd, km" data-ng-model="trip.DistanceTraveled" />
-                <input type="text" class="form-control" placeholder="Startadress" data-ng-model="trip.AdressStart" required /> <button type="button" data-ng-click="getStartLocation()">Placeholder</button>
-                <input type="text" class="form-control" placeholder="Destinationsadress" data-ng-model="trip.AdressStop" required /> <button type="button" data-ng-click="getStopLocation()">Placeholder</button>
+                <input type="text" class="form-control" placeholder="{{trip.DistanceTraveled = trip.MileageStop-trip.MileageStart}}" data-ng-model="trip.DistanceTraveled" />
+                <input type="text" class="form-control" placeholder="Startadress" data-ng-model="trip.AdressStart" required /><button type="button" data-ng-click="getStartLocation()">Adress</button>
+                <input type="text" class="form-control" placeholder="Destinationsadress" data-ng-model="trip.AdressStop" required /><button type="button" data-ng-click="getStopLocation()">Adress</button>
                 <div class="col-lg-10">
                     <textarea class="form-control" placeholder="Ärende" id="textAreaErrand" data-ng-model="trip.Erand" required></textarea>
                     <br />

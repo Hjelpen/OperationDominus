@@ -46,7 +46,7 @@
 
             $scope.getStopLocation = function () {
                 $scope.AdressStop = geoLocationService.getUserLocation();
-                console.log($scope.getStopLocation)
+                console.log($scope.AdressStop)
             },
                  function (error) {
                      console.log(error)

@@ -9,9 +9,11 @@ using System;
 namespace AngularJS.Journey.Skolprojekt.App_Start
 {
     public class Startup
-    {      
+    {
         public void Configuration(IAppBuilder app)
         {
+            log4net.Config.XmlConfigurator.Configure();
+
             ConfigureOAuth(app);
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
@@ -22,6 +24,7 @@ namespace AngularJS.Journey.Skolprojekt.App_Start
 
         public void ConfigureOAuth(IAppBuilder app)
         {
+            
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 Provider = new AuthorizationServerProvider(),

@@ -30,5 +30,15 @@
                  });
             };
 
+            $scope.deleteVehicle = function (vehicle) {
+                console.log(vehicle)
+                if (confirm("vill du ta bort bilen")) {
+                    var getData = vehicleService.deletevehicle(vehicle).then
+                        (function (response) {
+                            getAllVehicles();
+                        }
+                    )
+                };
+            }
         }]);
 })();

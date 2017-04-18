@@ -24,12 +24,10 @@
 
                var latlng = { lat: parseFloat(coords.latitude), lng: parseFloat(coords.longitude) };
 
-               return geocoder.geocode({ 'location': latlng }, function (results, status) {
+                   geocoder.geocode({ 'location': latlng }, function (results, status) {
                    console.log(results)
-                   return results;
                    if (status == google.maps.GeocoderStatus.OK) {
                        console.log(results);
-                       geoLocationServiceFactory.locations = results
                        if (results[0]) {
                            var formattedAdress = results[0].formatted_address;
                            console.log(formattedAdress);

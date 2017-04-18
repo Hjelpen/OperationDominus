@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -8,7 +7,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using AngularJS.Journey.Skolprojekt.DataAcess;
 using AngularJS.Journey.Skolprojekt.Models;
 using AngularJS.Journey.Skolprojekt.Providers;
 using System.Security.Claims;
@@ -17,6 +15,7 @@ using AngularJS.Journey.Skolprojekt.Views;
 
 namespace AngularJS.Journey.Skolprojekt.API
 {
+    [Authorize]
     public class TripsController : ApiController
     {
         private DataAcess.DbContext db = DbContextProvider.Instance.DbContext;

@@ -12,12 +12,11 @@ using AngularJS.Journey.Skolprojekt.Repositories;
 using System.Net.Http;
 using AngularJS.Journey.Skolprojekt.Providers;
 using System.Collections.Generic;
-using System.Web.Helpers;
-using System.Web.Http.Results;
 using AngularJS.Journey.Skolprojekt.Views;
 
 namespace AngularJS.Journey.Skolprojekt.API
 {
+    [Authorize]
     public class VehiclesController : ApiController
     {
         private DbContext db;

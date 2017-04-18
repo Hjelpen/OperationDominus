@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AngularJS.Journey.Skolprojekt.Repositories;
 using System.Security.Claims;
 using AngularJS.Journey.Skolprojekt.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web;
 
 namespace AngularJS.Journey.Skolprojekt.Providers
 {
@@ -18,7 +18,8 @@ namespace AngularJS.Journey.Skolprojekt.Providers
         {
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-
+  
+                  
             using (UserRepository _repo = new UserRepository())
             {
                 ApplicationUser user = await _repo.FindUser(context.UserName, context.Password);

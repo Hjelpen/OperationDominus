@@ -6,17 +6,13 @@
 </head>
 <body>
     <div id="controllerDiv" ng-controller="vehicleController" ng-init="getAllVehicles()">
-        <h3>Alla fordon</h3>
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Registreringsnummer</th>
-                <th>Status</th>
+                <th>Fordon</th>
             </tr>
             <tr ng-repeat="vehicle in vehicles">
-                <td>{{vehicle.carId}}</td>
-                <td>{{vehicle.licensNumber}}</td>
-                <td>{{vehicle.status}}</td>
+                <td>{{vehicle.licensNumber}}  <button class="fa fa-trash w3-large" type="submit"  data-ng-click="deleteVehicle(vehicle)"></button>
+                </td>
             </tr>
         </table>
         <br />

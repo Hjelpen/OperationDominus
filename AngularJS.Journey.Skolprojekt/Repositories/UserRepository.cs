@@ -4,15 +4,13 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Threading.Tasks;
 using AngularJS.Journey.Skolprojekt.Models;
 using AngularJS.Journey.Skolprojekt.DataAcess;
-using System.Security.Claims;
-using System.Linq;
-using System.Security.Principal;
 using AngularJS.Journey.Skolprojekt.Providers;
 
 namespace AngularJS.Journey.Skolprojekt.Repositories
 {
     public class UserRepository : IDisposable
     {
+     
        private DbContext _ctx;
 
        private UserManager<ApplicationUser> _userManager;
@@ -25,6 +23,7 @@ namespace AngularJS.Journey.Skolprojekt.Repositories
 
         public async Task<IdentityResult> RegisterUser (User userModel)
         {
+
             ApplicationUser user = new ApplicationUser
             {
                 UserName = userModel.UserName
