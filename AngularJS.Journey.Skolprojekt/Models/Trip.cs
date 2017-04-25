@@ -8,6 +8,7 @@ namespace AngularJS.Journey.Skolprojekt.Models
         [Required]
         public int TripId { get; set; }
 
+        [Required]
         public string Vehicle { get; set; }
 
         [Required]

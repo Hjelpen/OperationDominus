@@ -9,12 +9,12 @@
 
         <div id="controllerDiv" ng-controller="reportController" ng-init="getAllVehicles()">
             <select name="vehicle" ng-model="VehicleDate.Vehicle"
-                    ng-options="v.carId as v.licensNumber for v in vehicles">
+                    ng-options="v.carId as v.licensNumber for v in vehicles | filter:v.Status='true'">
                 <option value="">Välj fordon</option>
             </select>
             <br />
-            <input type="date" name="currentdate" ng-model="VehicleDate.Date1" required />
-            <input type="date" name="currentdate" ng-model="VehicleDate.Date2" required />
+             datum 1: <input type="date" name="currentdate" ng-model="VehicleDate.Date1" required />
+             datum 2:<input type="date" name="currentdate" ng-model="VehicleDate.Date2" required />
             <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="getReport()">Generera PDF!</button>
         </div>
 

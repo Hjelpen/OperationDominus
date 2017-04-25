@@ -128,10 +128,9 @@ namespace AngularJS.Journey.Skolprojekt.API
             return Ok(trip);
         }
 
-        public static List<Trip> GetVehicleTrips(PdfModel pdfmodel)
+        public List<Trip> GetVehicleTrips(PdfModel pdfModel)
         {
-
-            return db.Trips.Where(x => x.Vehicle == pdfmodel.vehicle && x.Date >= pdfmodel.Date1 && x.Date <= pdfmodel.Date2).ToList();
+            return db.Trips.Where(x => x.Vehicle == pdfModel.vehicle && x.Date >= pdfModel.Date1 && x.Date <= pdfModel.Date2).ToList();
         }
 
 

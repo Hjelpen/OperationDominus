@@ -11,8 +11,11 @@ namespace AngularJS.Journey.Skolprojekt.API
         [HttpPost]
         public IHttpActionResult GeneratePdfUrl(PdfModel pdfModel)
         {
-           var url = PdfHelper.GetVehicleTripsPdfUrl(pdfModel);
-           return Ok(url);
+            var pdfhelper = new PdfHelper();
+
+            var url = pdfhelper.GetVehicleTripsPdfUrl(pdfModel);
+            return Ok(url);
         }
     }
+
 }
