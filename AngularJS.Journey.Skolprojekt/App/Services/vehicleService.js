@@ -20,17 +20,9 @@
                    });
            }
 
-           var _deletevehicle = function (vehicle) {
-               console.log(vehicle)
-               return $http.delete('https://localhost:44341/api/Vehicles', vehicle.CarId)
-                      .then(function (response) {
-                          return response;
-                      });
-           };
 
            vehicleServiceFactory.saveVehicle = _saveVehicle;
            vehicleServiceFactory.getSavedVehicles = _getAllVehicles;
-           vehicleServiceFactory.deletevehicle = _deletevehicle;
            return vehicleServiceFactory;
 
        }]);

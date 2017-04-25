@@ -1,44 +1,39 @@
 ﻿(function () {
     "use strict";
     angular.module('AngularJourneyApp')
-       .factory('geoLocationService', ['$http', function ($http) {
-       
-           var geoLocationServiceFactory = {}
-
-            var _getUserLocation =  function () {
-               if (navigator.geolocation) {
-                   navigator.geolocation.getCurrentPosition(showPosition, error);
-               } else {
-                   Console.log("No support for geolocation.");
-               }
-
-               function error(error){
-                   console.log(error);
-               }
-
-               function showPosition(position) {
+       .factory('geoLocationService', ['$http', '$q', function ($http, $q) {
                 
-               var geocoder = new google.maps.Geocoder;
+           var someService = {            
 
-               var coords = position.coords;
-
-               var latlng = { lat: parseFloat(coords.latitude), lng: parseFloat(coords.longitude) };
-
-                   geocoder.geocode({ 'location': latlng }, function (results, status) {
-                   console.log(results)
-                   if (status == google.maps.GeocoderStatus.OK) {
-                       console.log(results);
-                       if (results[0]) {
-                           var formattedAdress = results[0].formatted_address;
-                           console.log(formattedAdress);
-                       } else {
-                           console.log('No location found')
-                     }
+               getUserLocation: function () {
+                   if (navigator.geolocation) {
+                       navigator.geolocation.getCurrentPosition(showPosition, error);
+                   } else {
+                       Console.log("Inget stöd för geolocation.");
                    }
-           })
-        }      
-      };
-            geoLocationServiceFactory.getUserLocation = _getUserLocation;
-            return geoLocationServiceFactory;
-     }]);
+
+                   function error(error) {
+                       console.log(error);
+                   }
+
+                   function showPosition(position) {
+                       var geocoder = new google.maps.Geocoder;
+
+                       var coords = position.coords;
+
+                       var latlng = { lat: parseFloat(coords.latitude), lng: parseFloat(coords.longitude) };
+
+                       geocoder.geocode({ 'location': latlng }, function (results, status) {
+                           if (status == google.maps.GeocoderStatus.OK) {
+                           }
+                           if (results[0]) {
+                               var formattedAdress = results[0].formatted_address;
+                               console.log(formattedAdress)
+                           }
+                       });
+                   }
+               }
+           };
+                        return someService; 
+       }]);        
 })();

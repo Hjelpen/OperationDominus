@@ -1,8 +1,9 @@
 ﻿(function () {
     angular.module('AngularJourneyApp')
-        .controller('vehicleController', ['$scope', 'vehicleService', function ($scope, vehicleService) {
+        .controller('vehicleController', ['$scope', 'vehicleService', '$http', 'localStorageService', function ($scope, vehicleService, $http, localStorageService) {
 
             $scope.vehicles = [];
+            defaultVehicle = localStorage.getItem("DefaultVehicle");
 
             $scope.newVehicle = {
                 LicensNumber: "",
@@ -11,7 +12,7 @@
 
             $scope.getAllVehicles = function () {
                 vehicleService.getSavedVehicles().then(function (response) {
-                    $scope.vehicles = response.data;
+                    $scope.vehicles = response.data 
                 },
                  function (response) {
                      (response)
@@ -30,15 +31,36 @@
                  });
             };
 
-            $scope.deleteVehicle = function (vehicle) {
-                console.log(vehicle)
-                if (confirm("vill du ta bort bilen")) {
-                    var getData = vehicleService.deletevehicle(vehicle).then
-                        (function (response) {
-                            getAllVehicles();
-                        }
-                    )
-                };
+            $scope.defaultVehicle = function (index) {
+                var defaultVehicle = $scope.vehicles[index];
+                localStorageService.remove('DefaultVehicle', defaultVehicle);
+                localStorageService.set('DefaultVehicle', defaultVehicle);
             }
+
+            $scope.deleteVehicle = function (index) {
+                if (confirm("Vill du ta bort bilen?")) {
+                    $http({
+                        method: 'DELETE',
+                        url: 'https://localhost:44341/api/Vehicles/' + $scope.vehicles[index].carId,
+                    }).then(function successCallback(response) {
+                        $scope.vehicles.splice(index, 1);
+                    }, function errorCallback(response) {
+                        alert("Error : " + response.data.ExceptionMessage);
+                    });
+                }
+            };
+
+            $scope.updateVehicle = function (index) {
+                $http({
+                    method: 'PUT',
+                    url: 'https://localhost:44341/api/Vehicles/' + $scope.vehicles[index].carId,
+                }).then(function successCallback(response) {
+                    $scope.vehicles.splice(index, 1);
+                    $scope.getAllVehicles();
+                }, function errorCallback(response) {
+                    alert("Error : " + response.data.ExceptionMessage);
+                });              
+            };
+
         }]);
 })();

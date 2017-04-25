@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('AngularJourneyApp')
-        .controller('tripController', ['$scope', 'geoLocationService', 'tripService', 'vehicleService', function ($scope, geoLocationService, tripService, vehicleService) {
+        .controller('tripController', ['$scope', 'geoLocationService', 'tripService', 'vehicleService', 'localStorageService', function ($scope, geoLocationService, tripService, vehicleService, localStorageService) {
 
             $scope.vehicles = [];
             $scope.message = "";
@@ -16,6 +16,9 @@
                 Erand: "",
                 Notes: ""
             };
+
+            var defaultVehicle = localStorage.getItem("DefaultVehicle");
+            $scope.defaultVehicle = defaultVehicle;
 
             $scope.saveTrip = function () {
                 tripService.addTrip($scope.trip).then(function (response) {
@@ -36,20 +39,16 @@
                  });
             }
 
+
             $scope.getStartLocation = function () {
-                $scope.AdressStart = geoLocationService.getUserLocation();
-                console.log($scope.AdressStart)
-                },
-                 function (error) {
-                     console.log(error)
-                 }
+                geoLocationService.getUserLocation();
+                console.log()
+            };
 
             $scope.getStopLocation = function () {
-                $scope.AdressStop = geoLocationService.getUserLocation();
-                console.log($scope.AdressStop)
-            },
-                 function (error) {
-                     console.log(error)
-                 }
+                geoLocationService.getUserLocation();
+                console.log()
+            };
+
         }]);
 })();

@@ -68,16 +68,25 @@ namespace AngularJS.Journey.Skolprojekt.API
 
         // PUT: api/Vehicles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicle(int id, Vehicle vehicle)
+        public IHttpActionResult PutVehicle(int Id)
         {
+
+            Vehicle vehicle = db.Vehicles.Find(Id);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != vehicle.CarId)
+            if (Id != vehicle.CarId)
             {
                 return BadRequest();
+            }
+            if (vehicle.Status == true)
+            {
+                vehicle.Status = false;
+            }
+            else
+            {
+                vehicle.Status = true;
             }
 
             db.Entry(vehicle).State = System.Data.Entity.EntityState.Modified;
@@ -88,7 +97,7 @@ namespace AngularJS.Journey.Skolprojekt.API
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VehicleExists(id))
+                if (!VehicleExists(Id))
                 {
                     return NotFound();
                 }
@@ -121,9 +130,9 @@ namespace AngularJS.Journey.Skolprojekt.API
 
         // DELETE: api/Vehicles/5
         [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult DeleteVehicle(int id)
+        public IHttpActionResult DeleteVehicle(int Id)
         {
-            Vehicle vehicle = db.Vehicles.Find(id);
+            Vehicle vehicle = db.Vehicles.Find(Id);
             if (vehicle == null)
             {
                 return NotFound();

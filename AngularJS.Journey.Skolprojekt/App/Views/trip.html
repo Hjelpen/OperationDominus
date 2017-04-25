@@ -9,16 +9,27 @@
     <form class="form-horizontal">
         <div class=".col-xs-6 .col-md-4">
             <div id="controllerDiv" ng-controller="tripController" ng-init="getAllVehicles()">
-                <select name="vehicle" ng-model="trip.Vehicle"
-                        ng-options="v.carId as v.licensNumber for v in vehicles">
+                <select name="vehicle" class="col-lg-10" ng-model="trip.Vehicle"
+                        ng-options="v.carId as v.licensNumber for v in vehicles | filter:v.Status='false'">                  
                     <option value="">Välj fordon</option>
-                </select><br />
+                </select> 
+                <br />
+                <br />
                 Datum:  <input type="date" name="currentdate" data-ng-model="trip.Date" required />
                 <input type="text" class="form-control" placeholder="Mätarställning, start" data-ng-model="trip.MileageStart" required />
                 <input type="text" class="form-control" placeholder="Mätarställning, ankomst" data-ng-model="trip.MileageStop" required />
-                <input type="text" class="form-control" placeholder="{{trip.DistanceTraveled = trip.MileageStop-trip.MileageStart}}" data-ng-model="trip.DistanceTraveled" />
-                <input type="text" class="form-control" placeholder="Startadress" data-ng-model="trip.AdressStart" required /><button type="button" data-ng-click="getStartLocation()">Adress</button>
-                <input type="text" class="form-control" placeholder="Destinationsadress" data-ng-model="trip.AdressStop" required /><button type="button" data-ng-click="getStopLocation()">Adress</button>
+                <input type="text" class="form-control" placeholder="{{trip.DistanceTraveled = trip.MileageStop-trip.MileageStart}}" data-ng-model="trip.DistanceTraveled" />              
+                
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Startadress" data-ng-model="trip.AdressStart" required >
+                    <span class="input-group-addon"> <button type="button" button class="fa fa-globe fa-2x" data-ng-click="getStartLocation()"></button></span>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Destinationsadress" data-ng-model="trip.AdressStop" required >
+                    <span class="input-group-addon"> <button type="button" button class="fa fa-globe fa-2x" data-ng-click="getStopLocation()"></button></span>
+                </div>  
+              <br />
+
                 <div class="col-lg-10">
                     <textarea class="form-control" placeholder="Ärende" id="textAreaErrand" data-ng-model="trip.Erand" required></textarea>
                     <br />

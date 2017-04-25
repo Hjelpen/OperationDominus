@@ -11,8 +11,13 @@
                 <th>Fordon</th>
             </tr>
             <tr ng-repeat="vehicle in vehicles">
-                <td>{{vehicle.licensNumber}}  <button class="fa fa-trash w3-large" type="submit"  data-ng-click="deleteVehicle(vehicle)"></button>
-                </td>
+                <td hidden="hidden">{{vehicle.CarId}}</td>
+                <td hidden="hidden">{{vehicle.Status}}</td>
+                <td>{{vehicle.licensNumber}}  
+                <button class="fa fa-trash w3-large" type="submit"  ng-click="deleteVehicle($index)"></button>
+                <button type="submit" ng-click="defaultVehicle($index)">Default</button>
+                <button type="submit" class="btn btn-primary" ng-click="updateVehicle($index)">Status</button>
+                 </td>
             </tr>
         </table>
         <br />
