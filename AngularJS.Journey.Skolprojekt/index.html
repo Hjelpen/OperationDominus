@@ -27,12 +27,14 @@
     <script src="App/Controllers/mainpageController.js"></script>
     <script src="App/Controllers/vehicleController.js"></script>
     <script src="App/Controllers/tripController.js"></script>
+    <script src="App/Controllers/reportController.js"></script>
     <script src="App/Services/authInterceptorService.js"></script>
     <script src="App/Services/registerService.js"></script>
     <script src="App/Services/loginService.js"></script>
     <script src="App/Services/vehicleService.js"></script>
-    <script src="App/Services/tripService.js"></script>
+    <script src="App/Services/tripService.js"></script>   
     <script src="App/Services/geoLocationService.js"></script>
+    <script src="App/Services/reportService.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
@@ -55,6 +57,7 @@
                     <li data-ng-hide="!authentication.isAuth"><a href="#/mainpage">Hem</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="#/vehicle">Hantera fordon</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="#/trip">Ny resa</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/report">Rapport</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logga ut</a></li>
                 </ul>
             </div>

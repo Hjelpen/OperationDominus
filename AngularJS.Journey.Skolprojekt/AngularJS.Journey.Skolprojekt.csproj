@@ -51,6 +51,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -217,17 +221,20 @@
     <Content Include="App\Controllers\indexController.js" />
     <Content Include="App\Controllers\mainpageController.js" />
     <Content Include="App\Controllers\registerController.js" />
+    <Content Include="App\Controllers\reportController.js" />
     <Content Include="App\Controllers\tripController.js" />
     <Content Include="App\Controllers\vehicleController.js" />
     <Content Include="App\Services\authInterceptorService.js" />
     <Content Include="App\Services\geoLocationService.js" />
     <Content Include="App\Services\loginService.js" />
+    <Content Include="App\Services\reportService.js" />
     <Content Include="App\Services\tripService.js" />
     <Content Include="App\Services\registerService.js" />
     <Content Include="App\Services\vehicleService.js" />
     <Content Include="App\Views\home.html" />
     <Content Include="App\Views\mainpage.html" />
     <Content Include="App\Views\register.html" />
+    <Content Include="App\Views\report.html" />
     <Content Include="App\Views\trip.html" />
     <Content Include="App\Views\vehicle.html" />
     <Content Include="Content\bootstrap.cerulean.css" />
@@ -1002,13 +1009,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\AccountController.cs" />
+    <Compile Include="API\PdfController.cs" />
     <Compile Include="API\TripsController.cs" />
     <Compile Include="API\VehiclesController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="DataAcess\DbContext.cs" />
+    <Compile Include="Helpers\PdfHelper.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\PdfModel.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vehicle.cs" />

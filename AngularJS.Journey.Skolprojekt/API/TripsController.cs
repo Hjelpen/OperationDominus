@@ -12,6 +12,7 @@ using AngularJS.Journey.Skolprojekt.Providers;
 using System.Security.Claims;
 using AngularJS.Journey.Skolprojekt.Repositories;
 using AngularJS.Journey.Skolprojekt.Views;
+using AngularJS.Journey.Skolprojekt.Helpers;
 
 namespace AngularJS.Journey.Skolprojekt.API
 {
@@ -126,6 +127,13 @@ namespace AngularJS.Journey.Skolprojekt.API
 
             return Ok(trip);
         }
+
+        public static List<Trip> GetVehicleTrips(PdfModel pdfmodel)
+        {
+
+            return db.Trips.Where(x => x.Vehicle == pdfmodel.vehicle && x.Date >= pdfmodel.Date1 && x.Date <= pdfmodel.Date2).ToList();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

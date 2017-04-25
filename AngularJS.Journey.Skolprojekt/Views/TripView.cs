@@ -11,7 +11,7 @@ namespace AngularJS.Journey.Skolprojekt.Views
 
         public int TripId { get; set; }
         public string Vehicle { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public decimal MileageStart { get; set; }
         public decimal MileageStop { get; set; }
         public decimal DistanceTraveled { get; set; }

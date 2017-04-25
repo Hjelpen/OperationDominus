@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AngularJS.Journey.Skolprojekt.Models
 {
@@ -10,7 +11,7 @@ namespace AngularJS.Journey.Skolprojekt.Models
         public string Vehicle { get; set; }
 
         [Required]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         [Required]
         public decimal MileageStart { get; set; }
