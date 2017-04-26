@@ -2,10 +2,10 @@
     "use strict";
     angular.module('AngularJourneyApp')
        .factory('geoLocationService', ['$http', '$q', function ($http, $q) {
-                
-           var someService = {            
 
-               getUserLocation: function () {
+           var geoLocationService = {
+
+               getUserLocation: function (callback) {
                    if (navigator.geolocation) {
                        navigator.geolocation.getCurrentPosition(showPosition, error);
                    } else {
@@ -28,12 +28,13 @@
                            }
                            if (results[0]) {
                                var formattedAdress = results[0].formatted_address;
-                               console.log(formattedAdress)
+                               console.log(formattedAdress);
+                               callback(formattedAdress);
                            }
                        });
                    }
                }
            };
-                        return someService; 
-       }]);        
+           return geoLocationService;
+       }]);
 })();

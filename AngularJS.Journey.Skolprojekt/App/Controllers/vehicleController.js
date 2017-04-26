@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('AngularJourneyApp')
-        .controller('vehicleController', ['$scope', 'vehicleService', '$http', 'localStorageService', function ($scope, vehicleService, $http, localStorageService) {
+        .controller('vehicleController', ['$scope', '$window', 'vehicleService', '$http', 'localStorageService', function ($scope, $window, vehicleService, $http, localStorageService) {
 
             $scope.vehicles = [];
             defaultVehicle = localStorage.getItem("DefaultVehicle");
@@ -12,7 +12,7 @@
 
             $scope.getAllVehicles = function () {
                 vehicleService.getSavedVehicles().then(function (response) {
-                    $scope.vehicles = response.data 
+                    $scope.vehicles = response.data
                 },
                  function (response) {
                      (response)
@@ -33,8 +33,9 @@
 
             $scope.defaultVehicle = function (index) {
                 var defaultVehicle = $scope.vehicles[index];
-                localStorageService.remove('DefaultVehicle', defaultVehicle);
-                localStorageService.set('DefaultVehicle', defaultVehicle);
+                $window.localStorage.removeItem('DefaultVehicle');
+                $window.localStorage.setItem('DefaultVehicle', defaultVehicle.carId);
+
             }
 
             $scope.deleteVehicle = function (index) {

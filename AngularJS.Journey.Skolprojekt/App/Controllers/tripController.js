@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('AngularJourneyApp')
-        .controller('tripController', ['$scope', 'geoLocationService', 'tripService', 'vehicleService', 'localStorageService', function ($scope, geoLocationService, tripService, vehicleService, localStorageService) {
+        .controller('tripController', ['$scope', '$window', 'geoLocationService', 'tripService', 'vehicleService', 'localStorageService', function ($scope, $window, geoLocationService, tripService, vehicleService, localStorageService) {
 
             $scope.vehicles = [];
             $scope.message = "";
@@ -17,13 +17,12 @@
                 Notes: ""
             };
 
-            var defaultVehicle = localStorage.getItem("DefaultVehicle");
-            $scope.defaultVehicle = defaultVehicle;
 
             $scope.saveTrip = function () {
                 tripService.addTrip($scope.trip).then(function (response) {
                     $scope.message = "Resan sparades!";
                     $scope.trip = null;
+                    $scope.Notes = "";
                 },
                  function (response) {
                      (response)
@@ -31,8 +30,19 @@
             }
 
             $scope.getAllVehicles = function () {
+                var defaultVehicle = $window.localStorage.getItem('DefaultVehicle');
+                $scope.defaultVehicle = defaultVehicle;
                 vehicleService.getSavedVehicles().then(function (response) {
-                    $scope.vehicles = response.data;
+                    var array = [];
+                    response.data.forEach(function (element) {
+                        if ($scope.defaultVehicle && element.carId == $scope.defaultVehicle) {
+                            $scope.trip.Vehicle = element.carId;
+                            array.unshift(element);
+                        } else {
+                            array.push(element);
+                        }
+                    });
+                    $scope.vehicles = array;
                 },
                  function (response) {
                      (response)
@@ -41,13 +51,17 @@
 
 
             $scope.getStartLocation = function () {
-                geoLocationService.getUserLocation();
-                console.log()
+                geoLocationService.getUserLocation(function (address) {
+                    $scope.trip.AdressStart = address;
+                    $scope.$digest();
+                });
             };
 
             $scope.getStopLocation = function () {
-                geoLocationService.getUserLocation();
-                console.log()
+                geoLocationService.getUserLocation(function (address) {
+                    $scope.trip.AdressStop = address;
+                    $scope.$digest();
+                });
             };
 
         }]);
