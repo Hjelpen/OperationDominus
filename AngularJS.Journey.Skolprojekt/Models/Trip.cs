@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AngularJS.Journey.Skolprojekt.Models
@@ -34,6 +35,7 @@ namespace AngularJS.Journey.Skolprojekt.Models
 
         public string Notes { get; set; }
 
+        [JsonIgnore]
         public virtual ApplicationUser User { get; set; }
     }
 }

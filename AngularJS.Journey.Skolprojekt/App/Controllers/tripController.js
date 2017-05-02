@@ -21,8 +21,8 @@
             $scope.saveTrip = function () {
                 tripService.addTrip($scope.trip).then(function (response) {
                     $scope.message = "Resan sparades!";
-                    $scope.trip = null;
-                    $scope.Notes = "";
+                    $scope.trip = undefined;
+                    $scope.trip.Notes = "";
                 },
                  function (response) {
                      (response)

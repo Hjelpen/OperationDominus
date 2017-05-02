@@ -16,7 +16,7 @@
                 <td>{{vehicle.licensNumber}}  
                 <button class="fa fa-trash w3-large" type="submit"  ng-click="deleteVehicle($index)"></button>
                 <button type="submit" ng-click="defaultVehicle($index)">Default</button>
-                <button type="submit" class="btn btn-primary" ng-click="updateVehicle($index)">Status</button>
+                <input type="checkbox" ng-click="updateVehicle($index)"/>
                  </td>
             </tr>
         </table>

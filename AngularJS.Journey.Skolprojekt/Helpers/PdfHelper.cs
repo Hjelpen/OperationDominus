@@ -11,6 +11,8 @@ namespace AngularJS.Journey.Skolprojekt.Helpers
     public class PdfHelper
     {
 
+        readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public string GetVehicleTripsPdfUrl(PdfModel pdfModel)
         {
             var tc = new TripsController();
@@ -24,59 +26,65 @@ namespace AngularJS.Journey.Skolprojekt.Helpers
 
         public string BuildPdfAndReturnUrl(List<Trip> trips)
         {
-            var savePath = @"C:\Users\Eric\Documents\GitHub\OperationDominus\Dokument\" + Guid.NewGuid().ToString() + ".pdf";
+            var savePath = @"C:\" + Guid.NewGuid().ToString() + ".pdf";
             using (Document doc = new Document(PageSize.A4))
             {
-                using (PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(savePath, FileMode.Create)))
+                try
                 {
-                    doc.Open();
-                    BaseFont baseHelvetica = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, false);
-                    var color = BaseColor.BLACK;
-                    Font helvetica = new Font(baseHelvetica, 20, Font.BOLD, color);
-
-
-                    foreach(var trip in trips)
+                    using (PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(savePath, FileMode.Create)))
                     {
-                        PdfPTable table = new PdfPTable(2);
-                        PdfPCell cell = new PdfPCell(new Phrase(trip.Vehicle));
-                        cell.Colspan = 2;
-                        cell.BackgroundColor = BaseColor.BLUE;
+                        doc.Open();
+                        BaseFont baseHelvetica = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, false);
+                        var color = BaseColor.BLACK;
+                        Font helvetica = new Font(baseHelvetica, 20, Font.BOLD, color);
 
-                        cell.HorizontalAlignment = 1;
-                        cell.Padding = 5;
-                        table.AddCell(cell);
 
-                        table.AddCell("Datum");
-                        table.AddCell(trip.Date.ToString());
+                        foreach (var trip in trips)
+                        {
+                            PdfPTable table = new PdfPTable(2);
+                            PdfPCell cell = new PdfPCell(new Phrase(trip.Vehicle));
+                            cell.Colspan = 2;
+                            cell.BackgroundColor = BaseColor.BLUE;
 
-                        table.AddCell("Mätarställning, start");
-                        table.AddCell(trip.MileageStart.ToString());
+                            cell.HorizontalAlignment = 1;
+                            cell.Padding = 5;
+                            table.AddCell(cell);
 
-                        table.AddCell("Mätarställning, ankomst");
-                        table.AddCell(trip.MileageStop.ToString());
+                            table.AddCell("Datum");
+                            table.AddCell(trip.Date.ToString());
 
-                        table.AddCell("Reslängd, km");
-                        table.AddCell(trip.DistanceTraveled.ToString());
+                            table.AddCell("Mätarställning, start");
+                            table.AddCell(trip.MileageStart.ToString());
 
-                        table.AddCell("Startadress");
-                        table.AddCell(trip.AdressStart.ToString());
+                            table.AddCell("Mätarställning, ankomst");
+                            table.AddCell(trip.MileageStop.ToString());
 
-                        table.AddCell("Ankomstadress");
-                        table.AddCell(trip.AdressStop.ToString());
+                            table.AddCell("Reslängd, km");
+                            table.AddCell(trip.DistanceTraveled.ToString());
 
-                        table.AddCell("Ärende");
-                        table.AddCell(trip.Erand.ToString());
+                            table.AddCell("Startadress");
+                            table.AddCell(trip.AdressStart.ToString());
 
-                        table.AddCell("Anteckningar");
-                        table.AddCell(trip.Notes.ToString());
-                        table.PaddingTop = 10;
-                        table.SpacingAfter = 10;
-                        doc.Add(table);
+                            table.AddCell("Ankomstadress");
+                            table.AddCell(trip.AdressStop.ToString());
 
+                            table.AddCell("Ärende");
+                            table.AddCell(trip.Erand.ToString());
+
+                            table.AddCell("Anteckningar");
+                            table.AddCell(trip.Notes.ToString());
+                            table.PaddingTop = 10;
+                            table.SpacingAfter = 10;
+                            doc.Add(table);
+                        }
+
+                        doc.Close();
                     }
-
-                    doc.Close();
                 }
+                catch (Exception ex)
+                {
+                    _log.Error("Ett fel uppstod vid skapandet av pdf", ex);
+                }       
                 return savePath;
             }
 

@@ -5,36 +5,7 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-    <div id="controllerDiv" ng-controller="mainpageController" ng-init="getAllTrips()">
-
-        <h3>Sparade resor test</h3>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Vehicle Id</th>
-                <th>Date</th>
-                <th>Mileage Start</th>
-                <th>Mileage Stop</th>
-                <th>Distance Traveled</th>
-                <th>Address Start</th>
-                <th>Address Stop</th>
-                <th>Erand</th>
-                <th>Notes</th>
-            </tr>
-            <tr ng-repeat="trip in trips">
-                <td>{{trip.tripId}}</td>
-                <td>{{trip.vehicle}}</td>
-                <td>{{trip.date}}</td>
-                <td>{{trip.mileageStart}}</td>
-                <td>{{trip.mileageStop}}</td>
-                <td>{{trip.distanceTraveled}}</td>
-                <td>{{trip.adressStart}}</td>
-                <td>{{trip.adressStop}}</td>
-                <td>{{trip.erand}}</td>
-                <td>{{trip.notes}}</td>
-            </tr>
-        </table>
-        <br />
+    <div id="controllerDiv" ng-controller="mainpageController">
         <a href="/#/trip" class="btn btn-success btn-lg btn-block">Ny resa</a>
         <hr />
         <h1>Pågende resa</h1>

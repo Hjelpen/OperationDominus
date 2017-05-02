@@ -58,41 +58,6 @@ namespace AngularJS.Journey.Skolprojekt.API
             return Ok(trip);
         }
 
-        // PUT: api/Trips/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutTrip(int id, Trip trip)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != trip.TripId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(trip).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TripExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Trips
         [ResponseType(typeof(Trip))]
         [Authorize]
@@ -112,27 +77,16 @@ namespace AngularJS.Journey.Skolprojekt.API
             return Ok();
         }
 
-        // DELETE: api/Trips/5
-        [ResponseType(typeof(Trip))]
-        public IHttpActionResult DeleteTrip(int id)
-        {
-            Trip trip = db.Trips.Find(id);
-            if (trip == null)
-            {
-                return NotFound();
-            }
-
-            db.Trips.Remove(trip);
-            db.SaveChanges();
-
-            return Ok(trip);
-        }
 
         public List<Trip> GetVehicleTrips(PdfModel pdfModel)
         {
-            return db.Trips.Where(x => x.Vehicle == pdfModel.vehicle && x.Date >= pdfModel.Date1 && x.Date <= pdfModel.Date2).ToList();
+            return db.Trips.Where(x => x.Vehicle == pdfModel.Vehicle && x.Date >= pdfModel.Date1 && x.Date <= pdfModel.Date2).ToList();
         }
 
+        public List<Trip>GetChartData(PdfModel pdfModel)
+        {
+            return db.Trips.Where(x => x.Vehicle == pdfModel.Vehicle && x.Date >= pdfModel.Date1 && x.Date <= pdfModel.Date2).ToList();
+        }
 
         protected override void Dispose(bool disposing)
         {
