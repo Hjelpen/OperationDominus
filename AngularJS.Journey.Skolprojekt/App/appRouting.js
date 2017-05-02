@@ -39,7 +39,7 @@ angular.module('AngularJourneyApp').
         templateUrl: "/App/Views/report.html"
     });
 
-    $routeProvider.when("/suport", {
+    $routeProvider.when("/support", {
         controller: "supportController",
         templateUrl: "/App/Views/support.html"
     });
