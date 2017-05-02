@@ -11,8 +11,6 @@ namespace AngularJS.Journey.Skolprojekt.Helpers
     public class PdfHelper
     {
 
-        readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         public string GetVehicleTripsPdfUrl(PdfModel pdfModel)
         {
             var tc = new TripsController();
@@ -29,8 +27,7 @@ namespace AngularJS.Journey.Skolprojekt.Helpers
             var savePath = @"C:\" + Guid.NewGuid().ToString() + ".pdf";
             using (Document doc = new Document(PageSize.A4))
             {
-                try
-                {
+               
                     using (PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(savePath, FileMode.Create)))
                     {
                         doc.Open();
@@ -80,15 +77,9 @@ namespace AngularJS.Journey.Skolprojekt.Helpers
 
                         doc.Close();
                     }
-                }
-                catch (Exception ex)
-                {
-                    _log.Error("Ett fel uppstod vid skapandet av pdf", ex);
-                }       
+                     
                 return savePath;
             }
-
-
         }
     }
 }
