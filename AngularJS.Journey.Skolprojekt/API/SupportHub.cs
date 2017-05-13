@@ -1,27 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Security.Claims;
-using AngularJS.Journey.Skolprojekt.Repositories;
 
-namespace AngularJS.Journey.Skolprojekt.API
+namespace Journey.Support
 {
     [Authorize]
     public class SupportHub : Hub
     {
 
-        private UserRepository _repo = new UserRepository();
-
-        public void Hello()
+        private string GetCurrentUser()
         {
-            Clients.All.hello();
+            var identity = (ClaimsIdentity)Context.User.Identity;
+            var name = identity.Claims.FirstOrDefault(x => x.Type.Equals("user_name")).Value;
+            return name;
+        }
+
+        public void Send(string name, string message)
+        {
+            var currentUserName = Context.QueryString["userName"];
+            var user = GetCurrentUser();
+
+            Clients.All.broadcastMessage(user, message);
+
         }
 
         public override Task OnConnected()
         {
+            var connectionId = Context.ConnectionId;
+            var connectionUser = Context.User;
+            var currentUserName = Context.QueryString["userName"];
+            Groups.Add(connectionId, currentUserName);
+
             return base.OnConnected();
         }
 
@@ -35,11 +45,10 @@ namespace AngularJS.Journey.Skolprojekt.API
             return base.OnReconnected();
         }
 
-        private string GetUserName()
+
+        public void Hello()
         {
-            var identity = (ClaimsIdentity)Context.User.Identity;
-            var name = identity.Claims.FirstOrDefault(x => x.Type.Equals("user_name")).Value;
-            return name;
+            Clients.All.hello();
         }
     }
 }

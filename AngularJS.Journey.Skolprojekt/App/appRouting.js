@@ -39,9 +39,10 @@ angular.module('AngularJourneyApp').
         templateUrl: "/App/Views/report.html"
     });
 
-    $routeProvider.when("/support", {
-        controller: "supportController",
-        templateUrl: "/App/Views/support.html"
+    $routeProvider.when('/support', {
+        templateUrl: 'App/views/support.html',
+        controller: 'supportController',
+        controllerAs: 'vm'
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });

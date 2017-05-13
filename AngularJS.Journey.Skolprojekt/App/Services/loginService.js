@@ -10,7 +10,8 @@
 
           var _authentication = {
               isAuth: false,
-              userName: ""
+              userName: "",
+              token: ""           
           };
 
           var _login = function (loginData) {
@@ -25,6 +26,7 @@
 
                   _authentication.isAuth = true;
                   _authentication.userName = loginData.userName;
+                  _authentication.token = response.data.access_token;
 
                   deferred.resolve(response);
 

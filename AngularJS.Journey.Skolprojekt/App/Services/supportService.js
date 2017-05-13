@@ -1,40 +1,40 @@
-﻿(function () {
-    "use strict";
-    angular.module('AngularJourneyApp')
-       .factory('supportService', ['$http', 'loginService', '$rootScope', function ($http, loginService, $rootScope) {
+﻿//(function () {
+//    "use strict";
+//    angular.module('angularjourneyapp')
+//       .factory('supportservice', ['$http', 'loginservice', '$rootscope', function ($http, loginservice, $rootscope) {
 
-           var proxy;
-           var connection;
-           return {
+//           var proxy;
+//           var connection;
+//           return {
 
-               connect: function () {
-                   connection = loginService.authentication.tokenBearer;
-                   connection.qs = { "access_token": token };
-                   proxy = connection.createHubProxy('SupportHub')
+//               connect: function () {
+//                   connection = loginservice.authentication.tokenbearer;
+//                   connection.qs = { "access_token": token };
+//                   proxy = connection.createhubproxy('supporthub')
 
-                   proxy.on('broadcast', function (name, message) {
-                       $rootScope.brodcast('brodcast', { name: name, message: message });
-                   });
+//                   proxy.on('broadcast', function (name, message) {
+//                       $rootscope.brodcast('brodcast', { name: name, message: message });
+//                   });
 
-                   connection.start();
-               },
+//                   connection.start();
+//               },
                 
-               isConnecting: function () {
-                   return connection.state == 0;
-               },
+//               isconnecting: function () {
+//                   return connection.state == 0;
+//               },
 
-               isConnected: function () {
-                   return connection.state == 1;
-               },
+//               isconnected: function () {
+//                   return connection.state == 1;
+//               },
                
-               connectionState: function () {
-                   return connection.state;
-               },
+//               connectionstate: function () {
+//                   return connection.state;
+//               },
 
-               send: function (name, message) {
-                   proxy.invoke('send', name, message);
-               }
-           }
+//               send: function (name, message) {
+//                   proxy.invoke('send', name, message);
+//               }
+//           }
        
-       }]);
-})();
+//       }]);
+//})();

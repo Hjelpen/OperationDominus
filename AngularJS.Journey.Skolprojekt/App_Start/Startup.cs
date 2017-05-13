@@ -5,6 +5,8 @@ using Owin;
 using System.Web.Http;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Owin.Cors;
+using Microsoft.AspNet.SignalR;
 
 [assembly: OwinStartup(typeof(AngularJS.Journey.Skolprojekt.App_Start.Startup))]
 namespace AngularJS.Journey.Skolprojekt.App_Start
@@ -14,7 +16,21 @@ namespace AngularJS.Journey.Skolprojekt.App_Start
         public void Configuration(IAppBuilder app)
         {
             log4net.Config.XmlConfigurator.Configure();
-            app.MapSignalR();
+            app.Map("/signalr", map =>
+            {
+                map.UseCors(CorsOptions.AllowAll);
+
+                map.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
+                {
+                    Provider = new QueryStringOAuthBearerProvider()
+                });
+
+                var hubConfiguration = new HubConfiguration
+                {
+                    Resolver = GlobalHost.DependencyResolver,
+                };
+                map.RunSignalR(hubConfiguration);
+            });
 
             ConfigureOAuth(app);
             HttpConfiguration config = new HttpConfiguration();
@@ -44,13 +60,11 @@ namespace AngularJS.Journey.Skolprojekt.App_Start
 
         public class QueryStringOAuthBearerProvider : OAuthBearerAuthenticationProvider
         {
-
             public override Task RequestToken(OAuthRequestTokenContext context)
             {
+                var value = context.Request.Query.Get("token");
 
-                var value = context.Request.Query.Get("access_token");
-
-                if(!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value))
                 {
                     context.Token = value;
                 }

@@ -1,12 +1,46 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
-
-    
-
-</body>
-</html>
+﻿<div>
+    <form>
+        <div class="row" role="form" name="chatForm" novalidate>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h2 class="form-heading">Support chat</h2>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="form-group" ng-class="{ 'has-error' : chatForm.message.$invalid && !chatForm.message.$pristine }">
+                    <label>Meddelande</label>
+                    <input type="text"
+                           id="message"
+                           name="notes"
+                           class="form-control"
+                           data-ng-model="vm.chatForm.message">
+                    <p ng-show="chatForm.message.$invalid && !chatForm.message.$pristine" class="help-block">Något är fel med ditt meddelande.</p>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div>&nbsp <input type="text" id="displayname" value="MrUser" hidden /><br /></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <button class="btn btn-lg btn-info btn-block button" id="sendmessage" type="button" value="Send" ng-disabled="chatForm.$invalid" ng-click="vm.startNewtrip(newtripForm.$valid)">Skicka</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </form>
+    <div class="row">
+        <div>&nbsp <input type="text" id="displayname" value="MrUser" hidden /><br /></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div id="discussion">    </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
