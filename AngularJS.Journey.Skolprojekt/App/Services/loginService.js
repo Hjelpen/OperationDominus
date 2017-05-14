@@ -1,6 +1,4 @@
-﻿https://localhost:44341/
-
-(function () {
+﻿(function () {
     "use strict";
     angular.module('AngularJourneyApp')
       .factory('loginService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {

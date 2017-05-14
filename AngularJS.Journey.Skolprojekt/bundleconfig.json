@@ -1,0 +1,25 @@
+[
+  {
+    "outputFileName": "App/bundle.min.js",
+    "inputFiles": [
+      "App/app.module.js",
+      "App/appRouting.js",
+      "App/Services/vehicleService.js",
+      "App/Services/tripService.js",
+      "App/Services/supportService.js",
+      "App/Services/reportService.js",
+      "App/Services/registerService.js",
+      "App/Services/loginService.js",
+      "App/Services/geoLocationService.js",
+      "App/Services/authInterceptorService.js",
+      "App/Controllers/vehicleController.js",
+      "App/Controllers/tripController.js",
+      "App/Controllers/supportController.js",
+      "App/Controllers/reportController.js",
+      "App/Controllers/registerController.js",
+      "App/Controllers/mainpageController.js",
+      "App/Controllers/indexController.js",
+      "App/Controllers/homeController.js"
+    ]
+  }
+]

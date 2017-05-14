@@ -1,7 +1,7 @@
 ﻿(function () {
 
 angular.module('AngularJourneyApp').
-    config(function ($routeProvider, $locationProvider) {
+    config([ '$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $locationProvider.hashPrefix('');
 
     $routeProvider.when("/login", {
@@ -47,5 +47,5 @@ angular.module('AngularJourneyApp').
 
     $routeProvider.otherwise({ redirectTo: "/home" });
 
-    });
+    }]);
 })();
