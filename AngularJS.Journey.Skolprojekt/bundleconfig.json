@@ -1,25 +1,38 @@
 [
   {
-    "outputFileName": "App/bundle.min.js",
+    "outputFileName": "App/bundle.js",
     "inputFiles": [
+      "Scripts/angular.js",
+      "Scripts/jquery-1.9.1.js",
+      "Scripts/jquery.signalR-2.2.1.js",
+      "Scripts/angular-local-storage.js",
+      "Scripts/angular-route.js",
       "App/app.module.js",
       "App/appRouting.js",
-      "App/Services/vehicleService.js",
-      "App/Services/tripService.js",
-      "App/Services/supportService.js",
-      "App/Services/reportService.js",
-      "App/Services/registerService.js",
+      "App/Controllers/homeController.js",
+      "App/Controllers/indexController.js",
+      "App/Controllers/mainpageController.js",
+      "App/Controllers/registerController.js",
+      "App/Controllers/reportController.js",
+      "App/Controllers/supportController.js",
+      "App/Controllers/tripController.js",
+      "App/Controllers/vehicleController.js",
+      "App/Services/authInterceptorService.js",
       "App/Services/loginService.js",
       "App/Services/geoLocationService.js",
-      "App/Services/authInterceptorService.js",
-      "App/Controllers/vehicleController.js",
-      "App/Controllers/tripController.js",
-      "App/Controllers/supportController.js",
-      "App/Controllers/reportController.js",
-      "App/Controllers/registerController.js",
-      "App/Controllers/mainpageController.js",
-      "App/Controllers/indexController.js",
-      "App/Controllers/homeController.js"
+      "App/Services/registerService.js",
+      "App/Services/reportService.js",
+      "App/Services/tripService.js",
+      "App/Services/vehicleService.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/bundle.css",
+    "inputFiles": [
+      "Content/bootstrap.cerulean.css",
+      "Content/bootstrap.cerulean.min.css",
+      "Content/css.css",
+      "Content/style.css"
     ]
   }
 ]

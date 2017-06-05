@@ -17,7 +17,7 @@
                  function (response) {
                      (response)
                  });
-            }
+            };
 
             $scope.registerVehicle = function () {
 
