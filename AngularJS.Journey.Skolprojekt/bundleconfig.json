@@ -34,5 +34,12 @@
       "Content/css.css",
       "Content/style.css"
     ]
+  },
+  {
+    "outputFileName": "Content/bootstrap/bundle.css",
+    "inputFiles": [
+      "Content/bootstrap/bootstrap.css",
+      "Content/style.css"
+    ]
   }
 ]
